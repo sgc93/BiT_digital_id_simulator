@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 :root {
+	--color-bg-btn: #0084ff37;
+	--color-border: #0084ff;
+	--color-shadow: #03244386;
+	--color-bg-btn-white: #ffffff3e;
+	--color-border-white: #ffffff8d;
+	--color-shadow-white: #5c667086;
+	--color--slight-white: rgba(255, 255, 255, 0.168);
+
 	--color-text-primary: #646cff;
 	--color-text-secondary: #94a3b8;
 	--color-text-white: #ffffff;
@@ -11,6 +19,36 @@
 
 @layer components {
 	.bg {
-		@apply bg-[var(--color-bg-primary)] text-[var(--color-text-white)];
+		@apply bg-[var(--color-bg-primary)];
 	}
+
+	.glassmorphism {
+		@apply bg-[var(--color-bg-btn)] border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg;
+	}
+	.glassmorphism-white {
+		@apply bg-[var(--color-bg-btn-white)] border-[1px] border-[var(--color-border-white)] backdrop-blur-sm shadow-lg;
+	}
+}
+
+:root {
+}
+
+/* data field */
+
+.field_box {
+	@apply flex items-center gap-3;
+}
+
+.field_box span {
+	@apply font-semibold text-stone-200 w-[30%];
+}
+
+.field_box input[type="text"],
+input[type="number"] {
+	@apply bg-stone-200 px-2 py-1 rounded-lg text-stone-950 font-bold border-none outline-none transition-all duration-300 hover:bg-blue-300 hover:placeholder:text-stone-600 hover:translate-y-[-2px] focus:bg-blue-300 focus:translate-y-0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	display: none;
 }
