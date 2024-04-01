@@ -3,5 +3,14 @@
 @tailwind utilities;
 
 :root {
-	--color-text-main: #646cff;
+	--color-text-primary: #646cff;
+	--color-text-secondary: #94a3b8;
+	--color-text-white: #ffffff;
+	--color-bg-primary: #0f172a;
+}
+
+@layer components {
+	.bg {
+		@apply bg-[var(--color-bg-primary)] text-[var(--color-text-white)];
+	}
 }
