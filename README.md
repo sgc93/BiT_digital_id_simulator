@@ -14,5 +14,5 @@ an interesing ```Experimentsl``` Web app that can be used as validation and simu
 <br /><br />
 
 ```Simulating and downloading page```
-![simulatingPage](https://github.com/sgc93/BiT_digital_id_simulator/blob/main/public/screenshot/simulator.png)
+![simulatingPage](https://github.com/sgc93/BiT_digital_id_simulator/blob/main/public/screenshot/simulating.png)
 <br /><br />
