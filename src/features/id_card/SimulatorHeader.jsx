@@ -1,6 +1,6 @@
 import { IoCloseCircle } from "react-icons/io5";
 
-export default function SimulatorHeader({ handleClose }) {
+export default function SimulatorHeader({ simulate }) {
 	return (
 		<div className=" flex flex-col h-[8%] w-full">
 			<div className="flex items-center justify-between px-2 py-[2px]">
@@ -9,7 +9,7 @@ export default function SimulatorHeader({ handleClose }) {
 				</span>
 				<IoCloseCircle
 					className="text-red-600 text-xl transition-all duration-300 hover:text-red-400 cursor-pointer"
-					onClick={() => handleClose()}
+					onClick={() => simulate(false)}
 				/>
 			</div>
 			<span className="w-full h-[1px] bg-stone-700"></span>
