@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { readFile } from "../../services/helper";
 import Downloader from "./Downloader";
 import IdCard from "./IdCard";
@@ -123,22 +123,34 @@ function ImageLoader({ setImg }) {
 	const [error, setError] = useState("");
 	const [imgName, setImgName] = useState("");
 
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setError("");
+		}, 3000);
+		return () => clearTimeout(timeoutId);
+	}, [error]);
+
 	async function handleUploading(e) {
 		const file = e.target.files[0];
 		try {
+			setError("");
 			setIsLoading(true);
 			const url = await readFile(file);
 			setImg(url);
 			setImgName(file.name);
 		} catch (error) {
-			setError(error.message);
+			setError("Please select you image!");
 		} finally {
 			setIsLoading(false);
 		}
 	}
 
 	return (
-		<div className="w-full bg-stone-200 rounded-lg flex overflow-hidden transition-all duration-300 hover:bg-blue-300">
+		<div
+			className={`w-[16rem] ${
+				error ? "bg-red-600" : "bg-stone-200"
+			} rounded-lg flex overflow-hidden transition-all duration-300 hover:bg-blue-300`}
+		>
 			<label
 				htmlFor="imgInput"
 				className="w-full h-full cursor-pointer py-1 text-center text-stone-800 font-semibold "
@@ -146,7 +158,7 @@ function ImageLoader({ setImg }) {
 				{isLoading ? (
 					"uploading..."
 				) : error !== "" ? (
-					<span>error</span>
+					<span>{error}</span>
 				) : imgName !== "" ? (
 					imgName
 				) : (
