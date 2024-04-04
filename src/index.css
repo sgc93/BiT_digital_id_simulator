@@ -9,7 +9,7 @@
 	--color-bg-btn-white: #ffffff3e;
 	--color-border-white: #ffffff8d;
 	--color-shadow-white: #5c667086;
-	--color--slight-white: rgba(255, 255, 255, 0.168);
+	--color-slight-white: rgba(255, 255, 255, 0.168);
 
 	--color-text-primary: #646cff;
 	--color-text-secondary: #94a3b8;
@@ -18,21 +18,18 @@
 }
 
 @layer components {
-	.bg {
-		@apply bg-[var(--color-bg-primary)];
-	}
-
-	.glassmorphism {
-		@apply bg-[var(--color-bg-btn)] border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg;
-	}
 	.glassmorphism-white {
 		@apply bg-[var(--color-bg-btn-white)] border-[1px] border-[var(--color-border-white)] backdrop-blur-sm shadow-lg;
 	}
 }
 
-:root {
+.bg {
+	background: linear-gradient(to right, #414345, #232526);
 }
 
+.reverse_bg {
+	background: linear-gradient(to left, #414345, #232526);
+}
 /* data field */
 
 .field_box {
