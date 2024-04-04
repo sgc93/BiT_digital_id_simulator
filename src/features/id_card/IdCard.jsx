@@ -4,7 +4,10 @@ import { dateFormatter, getRandomLetter } from "../../services/helper";
 
 export default function IdCard({ name, dept, id, letter, img }) {
 	return (
-		<div className="glassmorphism-white w-[55%] h-[52%] flex items-center justify-center rounded-xl p-[0.7rem]">
+		<div
+			id="idCard"
+			className="glassmorphism-white w-[55%] h-[270px] flex items-center justify-center rounded-xl p-[0.7rem]"
+		>
 			<div className="w-[400px] h-full bg-stone-50 rounded-lg overflow-hidden">
 				<IdCardHeader />
 				<IdCardBody name={name} dept={dept} id={id} img={img} />
@@ -18,7 +21,7 @@ function IdCardHeader() {
 	return (
 		<div className="h-[70px] bg-[#0066cc] flex items-center gap-4">
 			<img className="h-full" src="/bitLogo.png" alt="bitLogo" />
-			<div className="w-full flex flex-col items-center text-stone-50 text-xl">
+			<div className="w-full h-[70px] flex flex-col items-center justify-center text-stone-50 text-xl">
 				<span className="">Bahir Dar Institute of Technology</span>
 				<span>Bahir Dar University</span>
 			</div>
@@ -40,7 +43,7 @@ function IdCardBody({ name, dept, id, img }) {
 				<img className="w-full h-full" src={img} alt={name.split(" ")[0]} />
 			</div>
 			<div className="w-[calc(100%-122px)] h-full flex flex-col">
-				<span className="w-full h-[1.3rem] bg-black text-white text-center text-[.8rem]">
+				<span className="w-full h-[20.8px] bg-black text-white text-center text-[.8rem]">
 					BSC STUDENT ID
 				</span>
 				<div className="relative w-full h-[calc(100%-1.3rem)]">
