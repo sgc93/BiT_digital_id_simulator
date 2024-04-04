@@ -1,23 +1,19 @@
-import { useEffect, useState } from "react";
-import { downloadId, readFile } from "../../services/helper";
+import { useState } from "react";
+import { readFile } from "../../services/helper";
+import Downloader from "./Downloader";
 import IdCard from "./IdCard";
 import SimulatorHeader from "./SimulatorHeader";
-import Downloader from "./Downloader";
 
-export default function StudentId({ setIsIdBoxOpened }) {
-	const [name, setName] = useState("Eleizer ");
-	const [dept, setDept] = useState("Software Engineering");
+export default function StudentId({ simulate }) {
+	const [name, setName] = useState("Name FName GFName ");
+	const [dept, setDept] = useState("Associative Engineering");
 	const [id, setId] = useState("1309999");
 	const [letter, setLetter] = useState("R");
 	const [img, setImg] = useState("/avatars/female.svg");
 
-	function closeSimulator() {
-		setIsIdBoxOpened(false);
-	}
-
 	return (
 		<div className=" w-1/2 h-[85%] bg-stone-900 rounded-xl flex flex-col">
-			<SimulatorHeader handleClose={closeSimulator} />
+			<SimulatorHeader simulate={simulate} />
 			<div className="h-full w-full flex flex-col items-center pt-6 gap-10">
 				<IdCard name={name} dept={dept} id={id} img={img} letter={letter} />
 				<DataField
