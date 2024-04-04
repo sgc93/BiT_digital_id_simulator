@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaFilePdf, FaImage } from "react-icons/fa";
 import { downloadId } from "../../services/helper";
 
 const btn_style =
@@ -35,15 +36,17 @@ export default function Downloader({ name }) {
 			) : (
 				<div className="flex items-center gap-2">
 					<button
-						className={`bg-slate-500 hover:text-slate-900 hover:bg-slate-400 ${btn_style}`}
+						className={`flex items-center gap-1 bg-slate-500 hover:text-slate-900 hover:bg-slate-400 ${btn_style}`}
 						onClick={() => handleDownLoading("pdf")}
 					>
+						<FaFilePdf />
 						<span>download as pdf</span>
 					</button>
 					<button
-						className={`bg-slate-500 hover:text-slate-900 hover:bg-slate-400 ${btn_style}`}
+						className={`flex items-center gap-1 bg-slate-500 hover:text-slate-900 hover:bg-slate-400 ${btn_style}`}
 						onClick={() => handleDownLoading("image")}
 					>
+						<FaImage />
 						<span>download as jpg</span>
 					</button>
 				</div>
