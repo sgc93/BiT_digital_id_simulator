@@ -42,12 +42,13 @@ export function downloadId(fileType, fileName) {
 					a.setAttribute("download", `${fileName}.jpg`);
 					a.click();
 					a.remove();
+					resolve("Image downloaded successfully!");
 				} else {
 					const pdf = new jsPDF();
 					pdf.addImage(url, "JPG", 35, 20);
 					pdf.save(`${fileName}.pdf`);
+					resolve("Pdf downloaded successfully!");
 				}
-				resolve("Id downloaded successfully!");
 			})
 			.catch(() => {
 				reject("something went wrong!");
