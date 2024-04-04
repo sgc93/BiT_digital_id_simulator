@@ -1,3 +1,5 @@
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import { letters } from "../data/constants";
 
 export function dateFormatter(date, mLength) {
@@ -25,5 +27,30 @@ export function readFile(file) {
 		reader.onload = (event) => resolve(event.target.result);
 		reader.onerror = (error) => reject(error);
 		reader.readAsDataURL(file);
+	});
+}
+
+export function downloadId(fileType, fileName) {
+	return new Promise((resolve, reject) => {
+		const idDiv = document.getElementById("idCard");
+		html2canvas(idDiv)
+			.then((canvas) => {
+				const url = canvas.toDataURL("image/jpg");
+				if (fileType === "image") {
+					const a = document.createElement("a");
+					a.setAttribute("href", url);
+					a.setAttribute("download", `${fileName}.jpg`);
+					a.click();
+					a.remove();
+				} else {
+					const pdf = new jsPDF();
+					pdf.addImage(url, "JPG", 35, 20);
+					pdf.save(`${fileName}.pdf`);
+				}
+				resolve("Id downloaded successfully!");
+			})
+			.catch(() => {
+				reject("something went wrong!");
+			});
 	});
 }
