@@ -1,7 +1,10 @@
-import { useState } from "react";
-import { readFile } from "../../services/helper";
+import { useEffect, useState } from "react";
+import { downloadId, readFile } from "../../services/helper";
 import IdCard from "./IdCard";
 import SimulatorHeader from "./SimulatorHeader";
+
+const btn_style =
+	"text-slate-100 font-semibold px-2 py-[2px] rounded-lg transition-all duration-300";
 
 export default function StudentId({ setIsIdBoxOpened }) {
 	const [name, setName] = useState("Eleizer ");
@@ -9,15 +12,33 @@ export default function StudentId({ setIsIdBoxOpened }) {
 	const [id, setId] = useState("1309999");
 	const [letter, setLetter] = useState("R");
 	const [img, setImg] = useState("/avatars/female.svg");
+	const [status, setStatus] = useState("");
+
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setStatus("");
+		}, 2000);
+		return () => clearTimeout(timeoutId);
+	}, [status]);
 
 	function closeSimulator() {
 		setIsIdBoxOpened(false);
 	}
 
+	async function handleDownLoading() {
+		try {
+			const imgName = name.split(" ").join("_");
+			const statusFrom = await downloadId(imgName);
+			setStatus(statusFrom);
+		} catch (error) {
+			setStatus(error);
+		}
+	}
+
 	return (
-		<div className=" w-1/2 h-3/4 bg-stone-900 rounded-xl flex flex-col">
+		<div className=" w-1/2 h-[85%] bg-stone-900 rounded-xl flex flex-col">
 			<SimulatorHeader handleClose={closeSimulator} />
-			<div className="h-[92%] w-full flex flex-col items-center pt-6 gap-10">
+			<div className="h-full w-full flex flex-col items-center pt-6 gap-10">
 				<IdCard name={name} dept={dept} id={id} img={img} letter={letter} />
 				<DataField
 					name={name}
@@ -30,6 +51,24 @@ export default function StudentId({ setIsIdBoxOpened }) {
 					setLetter={setLetter}
 					setImg={setImg}
 				/>
+			</div>
+			<div className="w-full h-fit p-4 flex items-center justify-end">
+				{status ? (
+					<span
+						className={`${
+							status === "something went wrong!" ? "bg-red-600" : "bg-green-600"
+						} ${btn_style}`}
+					>
+						{status}
+					</span>
+				) : (
+					<button
+						className={`bg-slate-500 hover:text-slate-900 hover:bg-slate-400 ${btn_style}`}
+						onClick={() => handleDownLoading()}
+					>
+						<span>download</span>
+					</button>
+				)}
 			</div>
 		</div>
 	);
