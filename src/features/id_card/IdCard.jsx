@@ -32,7 +32,7 @@ function IdCardHeader() {
 function BiTStamp() {
 	return (
 		<div className="absolute -bottom-[0.4rem] -right-[2.65rem] h-[57%] w-full flex items-center justify-center py-1">
-			<img src="/bitLogo.png" className="h-full" />
+			<img src="/stamp.png" className="h-full" />
 		</div>
 	);
 }
