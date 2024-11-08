@@ -29,6 +29,14 @@ function IdCardHeader() {
 	);
 }
 
+function BiTStamp() {
+	return (
+		<div className="absolute -bottom-[0.4rem] -right-[2.65rem] h-[57%] w-full flex items-center justify-center py-1">
+			<img src="/bitLogo.png" className="h-full" />
+		</div>
+	);
+}
+
 function IdCardBody({ name, dept, id, img }) {
 	const date = dateFormatter(new Date(), "short")
 		.split(",")
@@ -39,8 +47,9 @@ function IdCardBody({ name, dept, id, img }) {
 
 	return (
 		<div className="w-full h-[122px] flex">
-			<div className="w-[122px] h-[122px] flex items-center justify-center">
+			<div className="relative w-[122px] h-[122px] flex items-center justify-center">
 				<img className="w-full h-full" src={img} alt={name.split(" ")[0]} />
+				<BiTStamp />
 			</div>
 			<div className="w-[calc(100%-122px)] h-full flex flex-col">
 				<span className="w-full h-[20.8px] bg-black text-white text-center text-[.8rem]">
