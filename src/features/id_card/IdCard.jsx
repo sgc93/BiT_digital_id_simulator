@@ -62,19 +62,19 @@ function IdCardBody({ name, dept, id, img }) {
 					<div className="absolute top-0 left-0 w-full h-full px-2 font-bold flex flex-col">
 						<div className="flex items-end gap-1">
 							<span>Name:</span>
-							<span>{name}</span>
+							<span className="line-clamp-1 text-[13.6px]">{name}</span>
 						</div>
 						<div className="flex items-end gap-3">
 							<span>Dept: </span>
-							<span>{dept}</span>
+							<span className="line-clamp-1 text-[13.6px]">{dept}</span>
 						</div>
 						<div className="flex items-end gap-6">
 							<span>ID:</span>
-							<span>BDU{id}</span>
+							<span className="line-clamp-1 text-[13.6px]">BDU{id}</span>
 						</div>
 						<div className="flex items-end gap-3">
 							<span>Issue Date:</span>
-							<span>{issueDate}</span>
+							<span className="line-clamp-1 text-[13.6px]">{issueDate}</span>
 						</div>
 					</div>
 				</div>

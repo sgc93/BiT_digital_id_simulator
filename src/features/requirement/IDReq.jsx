@@ -54,7 +54,7 @@ function ReqBox({ simulate }) {
 			</div>
 			<div className="w-full h-10 flex items-center justify-end">
 				<button
-					className="glassmorphism-white px-2 py-[2px]  rounded-lg text-lg font-semibold transition-all duration-300 hover:bg-slate-600 hover:text-slate-50"
+					className="glassmorphism-white px-2 py-[2px]  rounded-lg text-lg font-semibold transition-all duration-300 hover:bg-red-600 hover:text-slate-50"
 					onClick={() => simulate(true)}
 				>
 					start simulating
