@@ -18,69 +18,69 @@ export default function IdCard({ name, dept, id, letter, img }) {
 }
 
 function IdCardHeader() {
-	return (
-		<div className="h-[70px] bg-[#0066cc] flex items-center gap-4">
-			<img className="h-full" src="/bitLogo.png" alt="bitLogo" />
-			<div className="w-full h-[70px] flex flex-col items-center justify-center text-stone-50 text-xl">
-				<span className="">Bahir Dar Institute of Technology</span>
-				<span>Bahir Dar University</span>
-			</div>
-		</div>
-	);
+  return (
+    <div className="h-[70px] bg-[#0066cc] flex items-center gap-4">
+      <img className="h-full" src="/bitLogo.png" alt="bitLogo" />
+      <div className="w-full h-[70px] flex flex-col items-center justify-center text-stone-50 text-xl">
+        <span className="">Bahir Dar Institute of Technology</span>
+        <span className="mb-3">Bahir Dar University</span>
+      </div>
+    </div>
+  );
 }
 
 function BiTStamp() {
-	return (
-		<div className="absolute -bottom-[0.4rem] -right-[2.65rem] h-[57%] w-full flex items-center justify-center py-1">
-			<img src="/stamp.png" className="h-full" />
-		</div>
-	);
+  return (
+    <div className="absolute -bottom-[0.4rem] -right-[2.65rem] h-[57%] w-full flex items-center justify-center py-1">
+      <img src="/stamp.png" className="h-full" />
+    </div>
+  );
 }
 
 function IdCardBody({ name, dept, id, img }) {
-	const date = dateFormatter(new Date(), "short")
-		.split(",")
-		.join(" ")
-		.split(" ");
-	date.splice(2, 1);
-	const issueDate = date.join("-");
+  const date = dateFormatter(new Date(), "short")
+    .split(",")
+    .join(" ")
+    .split(" ");
+  date.splice(2, 1);
+  const issueDate = date.join("-");
 
-	return (
-		<div className="w-full h-[122px] flex">
-			<div className="relative w-[122px] h-[122px] flex items-center justify-center">
-				<img className="w-full h-full" src={img} alt={name.split(" ")[0]} />
-				<BiTStamp />
-			</div>
-			<div className="w-[calc(100%-122px)] h-full flex flex-col">
-				<span className="w-full h-[20.8px] bg-black text-white text-center text-[.8rem]">
-					BSC STUDENT ID
-				</span>
-				<div className="relative w-full h-[calc(100%-1.3rem)]">
-					<div className="absolute top-0 left-0 opacity-45 h-full w-full flex items-center justify-center py-1">
-						<img src="/bitLogo.png" className="h-full" />
-					</div>
-					<div className="absolute top-0 left-0 w-full h-full px-2 font-bold flex flex-col">
-						<div className="flex items-end gap-1">
-							<span>Name:</span>
-							<span className="line-clamp-1 text-[13.6px]">{name}</span>
-						</div>
-						<div className="flex items-end gap-3">
-							<span>Dept: </span>
-							<span className="line-clamp-1 text-[13.6px]">{dept}</span>
-						</div>
-						<div className="flex items-end gap-6">
-							<span>ID:</span>
-							<span className="line-clamp-1 text-[13.6px]">BDU{id}</span>
-						</div>
-						<div className="flex items-end gap-3">
-							<span>Issue Date:</span>
-							<span className="line-clamp-1 text-[13.6px]">{issueDate}</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className="w-full h-[122px] flex">
+      <div className="relative w-[122px] h-[122px] flex items-center justify-center">
+        <img className="w-full h-full" src={img} alt={name.split(" ")[0]} />
+        <BiTStamp />
+      </div>
+      <div className="w-[calc(100%-122px)] h-full flex flex-col">
+        <div className="flex items-center justify-center w-full h-[20.8px] bg-black text-white text-center text-[0.8rem]">
+          <span className="mb-3">BSC STUDENT ID</span>
+        </div>
+        <div className="relative w-full h-[calc(100%-1.3rem)]">
+          <div className="absolute top-0 left-0 opacity-45 h-full w-full flex items-center justify-center py-1">
+            <img src="/bitLogo.png" className="h-full" />
+          </div>
+          <div className="absolute top-0 left-0 w-full h-full px-2 font-bold flex flex-col">
+            <div className="flex items-end gap-1">
+              <span>Name:</span>
+              <span className=" text-[13.6px]">{name}</span>
+            </div>
+            <div className="flex items-end gap-3">
+              <span>Dept: </span>
+              <span className=" text-[13.6px]">{dept}</span>
+            </div>
+            <div className="flex items-end gap-6">
+              <span>ID:</span>
+              <span className=" text-[13.6px]">BDU{id}</span>
+            </div>
+            <div className="flex items-end gap-3">
+              <span>Issue Date:</span>
+              <span className=" text-[13.6px]">{issueDate}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function BarCode({ id, letter }) {
